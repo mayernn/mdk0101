@@ -1,13 +1,59 @@
 /*
-for (int stud = 1; stud <= 3; stud++)
+using System;
+using System.Collections.Generic;
+
+class Program
 {
-    double sum = 0;
-    for (int grad = 1; grad <= 5; grad++)
+    static void Main()
     {
-        double sred = Convert.ToDouble(Console.ReadLine());
-        sum += sred;
+        Dictionary<string, string> contacts = new Dictionary<string, string>();
+
+        while (true)
+        {
+            Console.WriteLine("Введите команду: добавить, поиск, показать или выход");
+            string command = Console.ReadLine().ToLower();
+
+            if (command == "выход")
+            {
+                break;
+            }
+
+            if (command == "добавить")
+            {
+                Console.Write("Введите имя: ");
+                string name = Console.ReadLine();
+
+                Console.Write("Введите номер телефона: ");
+                string phone = Console.ReadLine();
+
+                contacts[name] = phone;
+            }
+            else if (command == "поиск")
+            {
+                Console.Write("Введите имя: ");
+                string name = Console.ReadLine();
+
+                if (contacts.ContainsKey(name))
+                {
+                    Console.WriteLine(contacts[name]);
+                }
+                else
+                {
+                    Console.WriteLine("Контакт не найден");
+                }
+            }
+            else if (command == "показать")
+            {
+                foreach (KeyValuePair<string, string> contact in contacts)
+                {
+                    Console.WriteLine(contact.Key + ": " + contact.Value);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Неизвестная команда");
+            }
+        }
     }
-    double itog = sum / 5;
-    Console.WriteLine("Srednee " + stud + ": " + itog);
 }
 */
